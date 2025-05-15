@@ -33,7 +33,7 @@ CREATE TABLE  Collection (
   collection_year INT NOT NULL CHECK (collection_year > 1960) 
 );
 CREATE TABLE Collection_Track (
-  CT_ID INT PRIMARY KEY,
+  Colection_Track_ID INT PRIMARY KEY,
   collection_id INT REFERENCES Collection(CollectionID),
   track_id INT REFERENCES Track(TrackID)
 );
