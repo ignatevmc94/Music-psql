@@ -14,7 +14,7 @@ CREATE TABLE  Genre (
 CREATE TABLE  Track (
   TrackID INT PRIMARY KEY,
   name VARCHAR(100),
-  lenght INT CHECK (lenght > 3) ,
+  length INT CHECK (length > 3) ,
   album_id INT REFERENCES Album(AlbumID)
 );
 CREATE TABLE  Album_Artist (
