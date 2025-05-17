@@ -14,7 +14,7 @@ CREATE TABLE  Genre (
 CREATE TABLE  Track (
   TrackID INT PRIMARY KEY,
   name VARCHAR(100),
-  length INT CHECK (length > 3) ,
+  lenght INT CHECK (lenght > 3) ,
   album_id INT REFERENCES Album(AlbumID)
 );
 CREATE TABLE  Album_Artist (
@@ -30,10 +30,10 @@ CREATE TABLE  Artist_Genre (
 CREATE TABLE  Collection (
   CollectionID INT PRIMARY KEY,
   name VARCHAR(250) NOT NULL,
-  collection_year INT NOT NULL CHECK (collection_year > 1960) 
+  collection_year INT NOT NULL CHECK (collection_year > 1960)
 );
 CREATE TABLE Collection_Track (
-  Colection_Track_ID INT PRIMARY KEY,
+  Collection_Track_ID INT PRIMARY KEY,
   collection_id INT REFERENCES Collection(CollectionID),
   track_id INT REFERENCES Track(TrackID)
 );
