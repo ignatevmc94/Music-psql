@@ -18,7 +18,7 @@ WHERE nickname ~ '^[[:alpha:]]+$'
 
 -- 5. Название треков, которые содержат слово «мой» или «my».
 SELECT name FROM Track
-WHERE lower(name) LIKE '%my%' OR lower(name) LIKE '%мой%'
+WHERE name ~* '(^|\s)(мой|my)($|\s)'
 
 
 -- Задание 3.
@@ -42,10 +42,12 @@ GROUP BY a.albumid
 ORDER BY a.albumid 
 
 -- 4. Все исполнители, которые не выпустили альбомы в 2020 году.
-SELECT nickname FROM artist a 
-WHERE a.artistid IN (SELECT artist_id FROM Album_Artist 
-WHERE album_id IN (SELECT albumid FROM Album
-WHERE album_year <> '2020'))
+SELECT nickname FROM artist 
+WHERE nickname NOT IN (SELECT nickname FROM artist a
+JOIN album_artist alar ON a.artistid = alar.artist_id
+JOIN album al ON alar.album_id = al.albumid
+WHERE album_year = 2020)
+
 
 -- 5. Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами).
 SELECT name FROM Collection
